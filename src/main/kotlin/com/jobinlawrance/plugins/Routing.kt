@@ -1,16 +1,18 @@
 package com.jobinlawrance.plugins
 
-import io.ktor.routing.*
-import io.ktor.http.*
+import com.jobinlawrance.data.MovieRepository
 import io.ktor.application.*
 import io.ktor.response.*
-import io.ktor.request.*
+import io.ktor.routing.*
+import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
 
+    val moviesRepository by inject<MovieRepository>()
+
     routing {
-        get("/") {
-            call.respondText("Hello World!")
+        get("/movies") {
+            call.respond(moviesRepository.getAllTheMovies())
         }
     }
 }
