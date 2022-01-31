@@ -12,7 +12,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/movies") {
-            call.respond(moviesRepository.getAllTheMovies())
+            call.respond(moviesRepository.getAllTheMovies(Long.MAX_VALUE))
         }
     }
 }

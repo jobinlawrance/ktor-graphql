@@ -3,7 +3,7 @@ package com.jobinlawrance.data
 import com.jobinlawrance.sqldelight.MoviesQueries
 
 class MovieRepository(private val moviesQueries: MoviesQueries) {
-    fun getAllTheMovies(): List<Movie> {
-        return moviesQueries.selectAll().executeAsList().map { Movie(it) }
+    fun getAllTheMovies(limit: Long): List<Movie> {
+        return moviesQueries.selectAll(limit).executeAsList().map { Movie(it) }
     }
 }

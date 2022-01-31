@@ -1,5 +1,5 @@
 CREATE TABLE movies (
-  Film text,
+  Name text,
   Genre text,
   `Lead Studio` text,
   `Audience score` int DEFAULT NULL,
@@ -11,28 +11,33 @@ CREATE TABLE movies (
 
 selectAll:
 SELECT *
-FROM movies;
+FROM movies
+LIMIT :limit;
 
 insert:
-INSERT INTO movies(Film, Genre, `Lead Studio`, `Worldwide Gross`, Year)
+INSERT INTO movies(Name, Genre, `Lead Studio`, `Worldwide Gross`, Year)
 VALUES(?, ?, ?, ?,?);
 
 insertObject:
-INSERT INTO movies(Film, Genre, `Lead Studio`, `Audience score`, Profitability, `Rotten Tomatoes`, `Worldwide Gross`, Year)
+INSERT INTO movies(Name, Genre, `Lead Studio`, `Audience score`, Profitability, `Rotten Tomatoes`, `Worldwide Gross`, Year)
 VALUES ?;
 
 update:
 UPDATE movies
-SET `Worldwide Gross`=? WHERE Film=?;
+SET `Worldwide Gross`=? WHERE Name=?;
 
 delete:
-DELETE FROM movies WHERE Film=?;
+DELETE FROM movies WHERE Name=?;
 
 filmOrGenre:
 SELECT * FROM movies
-WHERE Film LIKE :searchQuery
+WHERE Name LIKE :searchQuery
 OR Genre LIKE :searchQuery;
 
 filmByNames:
 SELECT * FROM movies
-WHERE Film IN ?;
+WHERE Name IN ?;
+
+movieByGenre:
+SELECT * FROM movies
+WHERE Genre LIKE Genre;
