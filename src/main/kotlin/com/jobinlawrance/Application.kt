@@ -1,5 +1,6 @@
 package com.jobinlawrance
 
+import com.jobinlawrance.plugins.configureGraphQL
 import com.jobinlawrance.plugins.configureHTTP
 import com.jobinlawrance.plugins.configureKoin
 import com.jobinlawrance.plugins.configureRouting
@@ -13,5 +14,6 @@ fun main() {
         configureHTTP()
         configureSerialization()
         configureRouting()
+        configureGraphQL()
     }.start(wait = true)
 }
