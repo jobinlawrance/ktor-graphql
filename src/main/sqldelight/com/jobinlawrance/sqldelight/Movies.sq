@@ -1,4 +1,5 @@
 CREATE TABLE movies (
+  Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Name text,
   Genre text,
   `Lead Studio` text,

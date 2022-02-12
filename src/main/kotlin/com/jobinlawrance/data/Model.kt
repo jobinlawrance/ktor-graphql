@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Movie(
+    val id: Int,
     val name: String?,
     val genre: String?,
     val leadStudio: String?,
@@ -15,6 +16,7 @@ data class Movie(
     val year: Int?
 ) {
     constructor(dbModel: Movies) : this(
+        id = dbModel.Id,
         name = dbModel.Name,
         genre = dbModel.Genre,
         leadStudio = dbModel.Lead_Studio,
