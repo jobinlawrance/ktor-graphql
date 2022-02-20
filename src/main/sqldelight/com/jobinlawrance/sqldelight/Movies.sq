@@ -15,9 +15,17 @@ SELECT *
 FROM movies
 LIMIT :limit;
 
+selectById:
+SELECT *
+FROM movies
+WHERE Id = :id;
+
 insert:
 INSERT INTO movies(Name, Genre, `Lead Studio`, `Worldwide Gross`, Year)
 VALUES(?, ?, ?, ?,?);
+
+lastInsertRowId:
+SELECT LAST_INSERT_ID();
 
 insertObject:
 INSERT INTO movies(Name, Genre, `Lead Studio`, `Audience score`, Profitability, `Rotten Tomatoes`, `Worldwide Gross`, Year)
@@ -26,6 +34,10 @@ VALUES ?;
 update:
 UPDATE movies
 SET `Worldwide Gross`=? WHERE Name=?;
+
+updateRTScore:
+UPDATE movies
+SET `Rotten Tomatoes`=? WHERE Id=?;
 
 delete:
 DELETE FROM movies WHERE Name=?;
